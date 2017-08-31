@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGet.Client.V2</name>
+    </assembly>
+    <members>
+        <member name="T:NuGet.Client.V2.V2DependencyInfoResource">
+            <summary>
+            A V2 dependency info gatherer.
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.V2.V2DependencyInfoResource.ResolvePackages(System.Collections.Generic.IEnumerable{NuGet.PackagingCore.PackageIdentity},NuGet.Frameworks.NuGetFramework,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Dependency walk
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.V2.V2DependencyInfoResource.Seek(NuGet.PackagingCore.PackageDependency,NuGet.Frameworks.NuGetFramework,System.Boolean,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Recursive package dependency info gather
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.V2.V2ResourceProvider">
+            <summary>
+            Partial implementation for IResourceProvider to do the common V2 specific stuff.
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.V2.V2DownloadResourceProvider">
+            <summary>
+            Resource provider for V2 download.
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.V2.V2PackageRepositoryResource">
+            <summary>
+            Holds an IPackageRepository
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.V2.V2Resource">
+            <summary>
+            Represents a resource provided by a V2 server. [ Like search resource, metadata resource]
+            *TODOS: Add a trace source , Resource description ?
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.V2.V2PackageRepositoryResourceProvider">
+            <summary>
+            Creates/caches IPackageRepositories
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.V2.V2PackageSource">
+            <summary>
+            Allows an IPackageRepository repository to be passed in to a SourceRepository
+            </summary>
+        </member>
+    </members>
+</doc>

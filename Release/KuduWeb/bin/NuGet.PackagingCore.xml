@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGet.PackagingCore</name>
+    </assembly>
+    <members>
+        <member name="T:NuGet.PackagingCore.INuspecCoreReader">
+            <summary>
+            A basic nuspec reader that understands ONLY the id, version, and min client version of a package.
+            </summary>
+            <remarks>Higher level concepts used for normal development nupkgs should go at a higher level</remarks>
+        </member>
+        <member name="M:NuGet.PackagingCore.INuspecCoreReader.GetId">
+            <summary>
+            Package Id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NuGet.PackagingCore.INuspecCoreReader.GetVersion">
+            <summary>
+            Package Version
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.INuspecCoreReader.GetMinClientVersion">
+            <summary>
+            Minimum client version needed to consume the package.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.INuspecCoreReader.GetIdentity">
+            <summary>
+            Id and Version of a package.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.INuspecCoreReader.GetMetadata">
+            <summary>
+            Package metadata in the nuspec
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.IPackageReaderCore">
+            <summary>
+            Basic package reader that provides the identity, min client version, and file access.
+            </summary>
+            <remarks>Higher level concepts used for normal development nupkgs should go at a higher level</remarks>
+        </member>
+        <member name="M:NuGet.PackagingCore.IPackageReaderCore.GetIdentity">
+            <summary>
+            Identity of the package
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NuGet.PackagingCore.IPackageReaderCore.GetMinClientVersion">
+            <summary>
+            Minimum client version needed to consume the package.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.IPackageReaderCore.GetStream(System.String)">
+            <summary>
+            Returns a file stream from the package.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.IPackageReaderCore.GetFiles">
+            <summary>
+            All files in the nupkg
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.IPackageReaderCore.GetNuspec">
+            <summary>
+            Nuspec stream
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.IPackageIdentityComparer">
+            <summary>
+            Compares the id and version of a package
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.HashCodeCombiner">
+            <summary>
+            Hash code creator, based on the original NuGet hash code combiner/ASP hash code combiner implementations
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.HashCodeCombiner.GetHashCode(System.Object[])">
+            <summary>
+            Create a unique hash code for the given set of items
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.NuspecCoreReader">
+            <summary>
+            A basic nuspec reader that understand id, version, and a flat list of dependencies.
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.NuspecCoreReaderBase">
+            <summary>
+            A very basic Nuspec reader that understands the Id, Version, and MinClientVersion of a package.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReaderBase.#ctor(System.IO.Stream)">
+            <summary>
+            Read a nuspec from a stream.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReaderBase.#ctor(System.Xml.Linq.XDocument)">
+            <summary>
+            Reads a nuspec from XML
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReaderBase.GetId">
+            <summary>
+            Id of the package
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReaderBase.GetVersion">
+            <summary>
+            Version of the package
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReaderBase.GetMinClientVersion">
+            <summary>
+            The minimum client version this package supports.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReaderBase.GetMetadata">
+            <summary>
+            Nuspec Metadata
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.NuspecCoreReaderBase.Xml">
+            <summary>
+            Raw XML doc
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReader.#ctor(System.IO.Stream)">
+            <summary>
+            Read a nuspec from a stream.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReader.#ctor(System.Xml.Linq.XDocument)">
+            <summary>
+            Reads a nuspec from XML
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.NuspecCoreReader.GetDependencies">
+            <summary>
+            Returns a flat list of dependencies from a nuspec
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageDependencyComparer.Default">
+            <summary>
+            Default comparer
+            Null ranges and the All range are treated as equal.
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackageDependencyInfo">
+            <summary>
+            Represents a package identity and the dependencies of a package.
+            </summary>
+            <remarks>This class does not support groups of dependencies, the group will need to be selected before populating this.</remarks>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackageIdentity">
+            <summary>
+            Represents the core identity of a nupkg.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentity.#ctor(System.String,NuGet.Versioning.NuGetVersion)">
+            <summary>
+            Creates a new package identity.
+            </summary>
+            <param name="id">name</param>
+            <param name="version">version</param>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentity.Equals(NuGet.PackagingCore.PackageIdentity)">
+            <summary>
+            True if the package identities are the same.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentity.Equals(NuGet.PackagingCore.PackageIdentity,NuGet.Versioning.VersionComparison)">
+            <summary>
+            True if the identity objects are equal based on the given comparison mode.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentity.CompareTo(NuGet.PackagingCore.PackageIdentity)">
+            <summary>
+            Sorts based on the id, then version
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentity.Equals(System.Object)">
+            <summary>
+            Compare using the default comparer.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentity.GetHashCode">
+            <summary>
+            Creates a hash code using the default comparer.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NuGet.PackagingCore.PackageIdentity.ToString" -->
+        <member name="P:NuGet.PackagingCore.PackageIdentity.Id">
+            <summary>
+            Package name
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageIdentity.Version">
+            <summary>
+            Package Version
+            </summary>
+            <remarks>can be null</remarks>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageIdentity.HasVersion">
+            <summary>
+            True if the version is non-null
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageIdentity.Comparer">
+            <summary>
+            An equality comparer that checks the id, version, and version release label.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageDependencyInfo.#ctor(System.String,NuGet.Versioning.NuGetVersion,System.Collections.Generic.IEnumerable{NuGet.PackagingCore.PackageDependency})">
+            <summary>
+            Represents a package identity and the dependencies of a package.
+            </summary>
+            <param name="id">package name</param>
+            <param name="version">package version</param>
+            <param name="dependencies">package dependencies</param>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageDependencyInfo.GetHashCode">
+            <summary>
+            Hash code from the default PackageDependencyInfoComparer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageDependencyInfo.ToString">
+            <summary>
+            Example: Id : Dependency1, Dependency2
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageDependencyInfo.Dependencies">
+            <summary>
+            Package dependencies
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackageDependency">
+            <summary>
+            Represents a package dependency Id and allowed version range.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageDependency.GetHashCode">
+            <summary>
+            Hash code from the default PackageDependencyComparer
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageDependency.ToString">
+            <summary>
+            Id and Version range string
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageDependency.Id">
+            <summary>
+            Dependency package Id
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageDependency.VersionRange">
+            <summary>
+            Range of versions allowed for the depenency
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageDependencyInfoComparer.Default">
+            <summary>
+            Default comparer
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackageIdentityComparer">
+            <summary>
+            Compares the Id, Version, and Version release label. Version build metadata is ignored.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentityComparer.#ctor">
+            <summary>
+            Default version range comparer.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentityComparer.#ctor(NuGet.Versioning.VersionComparison)">
+            <summary>
+            Compare versions with a specific VersionComparison
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentityComparer.#ctor(NuGet.Versioning.IVersionComparer)">
+            <summary>
+            Compare versions with a specific IVersionComparer
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentityComparer.Equals(NuGet.PackagingCore.PackageIdentity,NuGet.PackagingCore.PackageIdentity)">
+            <summary>
+            True if the package identities are the same when ignoring build metadata.
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentityComparer.GetHashCode(NuGet.PackagingCore.PackageIdentity)">
+            <summary>
+            Hash code of the id and version
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageIdentityComparer.Compare(NuGet.PackagingCore.PackageIdentity,NuGet.PackagingCore.PackageIdentity)">
+            <summary>
+            Compares on the Id first, then version
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageIdentityComparer.Default">
+            <summary>
+            Default comparer that compares on the id, version, and version release labels.
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackageReaderCore">
+            <summary>
+            A core package reader that provides an identity and a flat list of dependencies.
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackageReaderCoreBase">
+            <summary>
+            A base package reader
+            </summary>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageReaderCoreBase.#ctor">
+            <summary>
+            PackageReaderCore
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.PackageReaderCoreBase.NuspecCore">
+            <summary>
+            Internal low level nuspec reader
+            </summary>
+            <remarks>This should be overriden and the higher level nuspec reader returned to avoid parsing
+            the nuspec multiple times</remarks>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageReaderCore.#ctor(System.IO.Stream)">
+            <summary>
+            PackageReaderCore
+            </summary>
+            <param name="stream">nupkg zip stream</param>
+        </member>
+        <member name="M:NuGet.PackagingCore.PackageReaderCore.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+            PackageReaderCore
+            </summary>
+            <param name="stream">nupkg zip stream</param>
+            <param name="leaveStreamOpen">true if the stream should not be disposed of when the package reader is disposed</param>
+        </member>
+        <member name="T:NuGet.PackagingCore.PackagingException">
+            <summary>
+            Generic packaging exception.
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:NuGet.PackagingCore.Strings.MissingNuspec">
+            <summary>
+              Looks up a localized string similar to Nuspec file does not exist in package &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="T:NuGet.PackagingCore.ZipArchiveHelper">
+            <summary>
+            Nupkg reading helper methods
+            </summary>
+        </member>
+    </members>
+</doc>

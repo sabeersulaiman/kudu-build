@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGet.Data</name>
+    </assembly>
+    <members>
+        <member name="T:NuGet.Data.CacheEnabledRequestMessage">
+            <summary>
+            HttpRequestMessage wrapper that holds additional flags for caching
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.CacheEnabledRequestMessage.#ctor(System.Uri,NuGet.Data.DataCacheOptions)">
+            <summary>
+            Request wrapper
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.CacheResponse">
+            <summary>
+            Simulated response from the cache.
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.DataCacheOptions">
+            <summary>
+            Options used for DataClient http requests.
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.DataCacheOptions.UseFileCache">
+            <summary>
+            If set the file will be stored in the file cache.
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.DataCacheOptions.MaxCacheLife">
+            <summary>
+            Maximum allowed file age. If the file is older than the limit it will be refetched.
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.DataCacheOptions.Refresh">
+            <summary>
+            If set pages will be requested and updated in the cache
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.RequestModifierHandler">
+            <summary>
+            Auth and proxy modifiers
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.CacheHandler">
+            <summary>
+            Caches responses based on the request's DataCacheOptions
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.CompactEntityReader">
+            <summary>
+            CompactEntityReader makes an attempt at understanding the expanded entity and RDF concepts from the compacted form 
+            for scenarios where the graph is not available, or simple answers are needed.
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.CompactEntityReader.#ctor(Newtonsoft.Json.Linq.JObject,System.Uri,System.Uri)">
+            <summary>
+            Creates a new compact entity reader.
+            </summary>
+            <param name="entityJson">The JObject of the entity. Required.</param>
+            <param name="entityUri">Optional, if the uri is already known it can be provided to save parsing it.</param>
+            <param name="pageUri">Optional, if the uri is already known it can be provided to save parsing it.</param>
+        </member>
+        <member name="M:NuGet.Data.CompactEntityReader.HasPredicates(System.Collections.Generic.IEnumerable{System.Uri})">
+            <summary>
+            Shortens the uris against the vocab and checks HasProperties
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.CompactEntityReader.HasProperties(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            True if the entity has all of these properties. This is assuming the proper vocabs are used.
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.CompactEntityReader.IsFromPage">
+            <summary>
+            True if the entity id and the root id match, meaning this entity is complete.
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.CompactEntityReader.PageUri">
+            <summary>
+            @id of the page root
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.CompactEntityReader.EntityUri">
+            <summary>
+            @id of the entity
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.CompactEntityReader.Vocab">
+            <summary>
+            @vocab used for this entity.
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.INuGetRequestModifier">
+            <summary>
+            Request modifiers add auth and proxy settings to outgoing requests. 
+            </summary>
+            <remarks>Modifiers should retrieve their settings and a list of package sources at creation time.
+            They should NOT make calls to the request endpoint to determine if they should handle it.</remarks>
+        </member>
+        <member name="M:NuGet.Data.INuGetRequestModifier.Modify(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Provides an opportunity to modify a request before it is sent.
+            </summary>
+            <param name="request">Request</param>
+        </member>
+        <member name="T:NuGet.Data.DataClient">
+            <summary>
+            A NuGet http client with support for authentication, proxies, and caching.
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Raw constructor that allows full overriding of all caching and default DataClient behavior.
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.#ctor">
+            <summary>
+            DataClient with the default options and caching support
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.#ctor(System.Net.Http.HttpMessageHandler,System.Collections.Generic.IEnumerable{NuGet.Client.INuGetMessageHandlerProvider})">
+            <summary>
+            Internal constructor for building the final handler
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.AssembleHandlers(System.Net.Http.HttpMessageHandler,System.Collections.Generic.IEnumerable{NuGet.Client.INuGetMessageHandlerProvider})">
+            <summary>
+            Chain the handlers together
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.GetJObject(System.Uri)">
+            <summary>
+            Retrieve a json file
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.GetJObjectAsync(System.Uri)">
+            <summary>
+            Retrieve a json file
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.DataClient.GetJObjectAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Retrieve a json file with caching
+            </summary>
+        </member>
+        <member name="P:NuGet.Data.DataClient.DefaultHandler">
+            <summary>
+            Default caching handler used by the data client
+            </summary>
+        </member>
+        <member name="T:NuGet.Data.UriLock">
+            <summary>
+            Session wide URI lock
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.Utility.IsValidJsonLd(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            True if this object has @context
+            </summary>
+            <param name="compacted"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NuGet.Data.Utility.ApplyPackageIdVersionToUriTemplate(System.Uri,System.String,NuGet.Versioning.NuGetVersion)">
+            <summary>
+            Applies a package's id and version to a URI template
+            </summary>
+            <param name="template">The URI Template</param>
+            <param name="id">The id of the package with natural casing</param>
+            <param name="version">The version of the package with natural casing</param>
+            <returns>The URI with the template fields applied</returns>
+        </member>
+        <member name="M:NuGet.Data.Utility.ApplyPackageIdVersionToUriTemplate(System.Collections.Generic.IEnumerable{System.Uri},System.String,NuGet.Versioning.NuGetVersion)">
+            <summary>
+            Applies a package's id and version to a list of URI templates
+            </summary>
+            <param name="templates">The list of URI templates</param>
+            <param name="id">The id of the package with natural casing</param>
+            <param name="version">The version of the package with natural casing</param>
+            <returns>The list of URIs with the template fields applied</returns>
+        </member>
+        <member name="M:NuGet.Data.Utility.ApplyPackageIdToUriTemplate(System.Uri,System.String)">
+            <summary>
+            Applies a package's id to a URI template
+            </summary>
+            <param name="template">The URI template</param>
+            <param name="id">The package's id with natural casing</param>
+            <returns>The URI with the template fields applied</returns>
+        </member>
+        <member name="M:NuGet.Data.Utility.ApplyPackageIdToUriTemplate(System.Collections.Generic.IEnumerable{System.Uri},System.String)">
+            <summary>
+            Applies a package's id to a list of URI templates
+            </summary>
+            <param name="templates">The list of URI templates</param>
+            <param name="id">The package's id with natural casing</param>
+            <returns>The list of URIs with the template fields applied</returns>
+        </member>
+        <member name="M:NuGet.Data.Utility.IsEntityFromPage(Newtonsoft.Json.Linq.JToken,System.Uri)">
+            <summary>
+            Check if the entity url matches the root url
+            </summary>
+            <param name="token">entity token</param>
+            <param name="entityUri">Optional field, if this is given the method will not try to parse it out again.</param>
+            <returns>true if the root uri is the base of the entity uri</returns>
+        </member>
+        <member name="M:NuGet.Data.Utility.IsRootUri(System.Uri)">
+            <summary>
+            True if the uri does not have a #
+            </summary>
+        </member>
+        <member name="M:NuGet.Data.Utility.CompareRootUris(System.Uri,System.Uri)">
+            <summary>
+            Checks if the uris match or differ only in the # part. 
+            If either are null this returns false.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

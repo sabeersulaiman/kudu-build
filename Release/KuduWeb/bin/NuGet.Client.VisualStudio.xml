@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGet.Client.VisualStudio</name>
+    </assembly>
+    <members>
+        <member name="T:NuGet.Client.VisualStudio.PSSearchMetadata">
+            <summary>
+            Model for search results shown by PowerShell console search.
+            *TODOS: Should we extract out ID,version and summary to a base search model ? 
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.VisualStudio.UIPackageMetadata">
+            <summary>
+            Full package details as used by the UI
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.VisualStudio.UIPackageMetadata.Identity">
+            <summary>
+            Package Id and Version
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.VisualStudio.UIPackageMetadata.Title">
+            <summary>
+            The Title of the package or the Id if no title was provided.
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.VisualStudio.UISearchMetadata">
+            <summary>
+            Model for Search results displayed by Visual Studio Package Manager dialog UI.
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.VisualStudio.SearchLatestResource">
+            <summary>
+            Retrieves the latest package metadata from search. This differs from SearchLatestResource in that 
+            it does not return all versions.
+            </summary>
+            <remarks>Equivalent to the legacy V2 search</remarks>
+        </member>
+        <member name="M:NuGet.Client.VisualStudio.SearchLatestResource.Search(System.String,NuGet.Client.SearchFilter,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves search results
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.VisualStudio.UIMetadataResource.GetMetadata(System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Returns all versions of a package
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.VisualStudio.UIMetadataResource.GetMetadata(NuGet.PackagingCore.PackageIdentity,System.Threading.CancellationToken)">
+            <summary>
+            Returns Metadata for a single package
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.VisualStudio.UIMetadataResource.GetMetadata(System.Collections.Generic.IEnumerable{NuGet.PackagingCore.PackageIdentity},System.Threading.CancellationToken)">
+            <summary>
+            Returns metadata for all packages
+            </summary>
+        </member>
+        <member name="T:NuGet.Client.VisualStudio.UISearchResource">
+            <summary>
+            Retrieves search metadata in the from used by the VS UI
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.VisualStudio.UISearchResource.Search(System.String,NuGet.Client.SearchFilter,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves search results
+            </summary>
+        </member>
+    </members>
+</doc>

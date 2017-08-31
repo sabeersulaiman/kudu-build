@@ -1,0 +1,8 @@
+﻿@if (Kudu.Core.Helpers.OSDetector.IsOnWindows())
+{
+    @RenderPage("WindowsConsole.cshtml");
+}
+else
+{
+    @RenderPage("LinuxConsole.cshtml");
+}

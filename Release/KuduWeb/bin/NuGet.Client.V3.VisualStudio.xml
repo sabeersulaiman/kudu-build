@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGet.Client.V3.VisualStudio</name>
+    </assembly>
+    <members>
+        <member name="T:NuGet.Client.V3.VisualStudio.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.ActionExecutor_RollingBack">
+            <summary>
+              Looks up a localized string similar to Install failed. Rolling back....
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.ActionResolver_UnsupportedAction">
+            <summary>
+              Looks up a localized string similar to Unrecognized Package Action &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.ActionResolver_UnsupportedDependencyBehavior">
+            <summary>
+              Looks up a localized string similar to Unsupported Dependency Behavior &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.DownloadActionHandler_InvalidDownloadUrl">
+            <summary>
+              Looks up a localized string similar to The download URL for {0} &apos;{1}&apos; is invalid..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.DownloadActionHandler_NoDownloadUrl">
+            <summary>
+              Looks up a localized string similar to No download URL could be found for {0}..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.NuGetRepository_CannotCreateAggregateRepo">
+            <summary>
+              Looks up a localized string similar to Cannot create a NuGet Repository from the Aggregate Source.
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.NuGetServiceProvider_ServiceNotSupported">
+            <summary>
+              Looks up a localized string similar to The {0} service is not supported by this object..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.PackageActionDescriptionWrapper_UnrecognizedAction">
+            <summary>
+              Looks up a localized string similar to Unrecognized Package Action &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.ProjectInstallationTarget_ProjectIsNotTargetted">
+            <summary>
+              Looks up a localized string similar to The project &apos;{0}&apos; is not one of the projects targetted by this object..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.Protocol_IndexMissingResourcesNode">
+            <summary>
+              Looks up a localized string similar to Service index document is missing the &apos;resources&apos; property..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.Protocol_MissingRegistrationBase">
+            <summary>
+              Looks up a localized string similar to The source does not have a Registration Base Url defined!.
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.Protocol_MissingSearchService">
+            <summary>
+              Looks up a localized string similar to The source does not have a Search service!.
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.RequiredFeatureUnsupportedException_DefaultMessageWithFeature">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; installation feature was required by a package but is not supported on the current host..
+            </summary>
+        </member>
+        <member name="P:NuGet.Client.V3.VisualStudio.Strings.RequiredFeatureUnsupportedException_DefaultMessageWithoutFeature">
+            <summary>
+              Looks up a localized string similar to The installation host does not support a feature required by this package..
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.V3.VisualStudio.V3SearchLatestResource.GetField(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Returns a field value or the empty string. Arrays will become comma delimited strings.
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.V3.VisualStudio.V3UIMetadataResource.GetField(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Returns a field value or the empty string. Arrays will become comma delimited strings.
+            </summary>
+        </member>
+        <member name="M:NuGet.Client.V3.VisualStudio.V3UISearchResource.GetField(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Returns a field value or the empty string. Arrays will become comma delimited strings.
+            </summary>
+        </member>
+    </members>
+</doc>

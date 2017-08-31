@@ -1,0 +1,124 @@
+﻿@using Kudu.Core.SourceControl
+@using Kudu.Web.Models
+
+@model ApplicationViewModel
+@{
+    ViewBag.Title = "Deployments";
+}
+
+@Html.Partial("_GitUrlTextbox", Model.GitUrl)
+
+<form method="post" class="well form-inline" action="@Url.Action("TriggerFetch", new { slug = ViewBag.slug })" id="triggerForm">
+    <fieldset>
+        <legend>Trigger deployment</legend>
+        <label for="repositoryUrl"><strong>Repository Url</strong></label>
+        <input type="text" id="repositoryUrl" name="repositoryUrl" class="form-control" data-val="true" data-val-required="*" />
+        @Html.DropDownList("repositoryType", new[] { new SelectListItem { Text = RepositoryType.Git.ToString() }, new SelectListItem { Text = RepositoryType.Mercurial.ToString() } }, new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary" data-loading-text="Fetching...">Go</button>
+    </fieldset>
+</form>
+
+@if (Model.Deployments.Count == 0)
+{
+    <p class="alert alert-info">You haven't pushed anything to this repository yet.</p>
+    return;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Message
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Deployer
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model.Deployments)
+        {
+            <tr>
+            <td>@d.Id.Substring(0, 10)</td>
+            <td><div class="ellipsis" style="width:450px">@d.Message</div></td>
+            <td>@d.Author</td>
+            <td>@d.Deployer</td>
+            <td>@d.StartTime</td>
+            <td>@d.EndTime</td>
+            <td>
+                @if (d.Complete)
+                {
+                    if (d.Status == Kudu.Core.Deployment.DeployStatus.Failed) 
+                    {
+                         <span class="label label-danger">Failed</span>
+                    }
+                    else
+                    {
+                        <span class="label label-success">Success</span>
+                    }
+                }
+                else
+                {
+                    <span class="label label-info">@d.Status</span>
+                }
+            </td>
+            <td style="width: 85px">
+                @if (d.Current)
+                {
+                    <div class="glyphicon glyphicon-ok"></div>
+                }
+                else if (d.Complete)
+                {
+<div class="dropdown">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Action
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="@Url.Action("deploy", "deployments", new { slug = ViewBag.slug, id = d.Id })"><i class="glyphicon glyphicon-repeat"></i> Deploy</a></li>
+    <li><a href="@Url.Action("deploy", "deployments", new { slug = ViewBag.slug, id = d.Id, clean = true })"><i class="glyphicon glyphicon-repeat"></i> Deploy (clean)</a></li>
+  </ul>
+</div>
+                }
+            </td>
+            <td style="width: 65px">
+                <a href="@Url.Action("log", "deployments", new { slug = ViewBag.slug, id = d.Id })" class="btn btn-link btn-xs">View Log</a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+$(function () {
+    var triggerForm = $("#triggerForm");
+    triggerForm.submit(function () {
+        triggerForm.find(".btn").button("loading");
+        $.post(this.action, triggerForm.serialize())
+         .always(function () {
+             location.reload(false);
+         });
+        
+        return false;
+    });
+});
+</script>
